@@ -1,0 +1,7 @@
+== README
+
+start server:
+> rails server -b 0.0.0.0
+
+
+<tt>rake doc:app</tt>.
