@@ -1,7 +1,6 @@
 == README
 
 start server:
-> rails server -b 0.0.0.0
+<tt>rails server -b 0.0.0.0</tt>
 
 
-<tt>rake doc:app</tt>.
