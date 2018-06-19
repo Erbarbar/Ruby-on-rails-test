@@ -29,35 +29,53 @@ var url = "https://scontent.fopo2-1.fna.fbcdn.net/v/t1.0-9/35464654_175915837081
 //var url = "http://tesseract.projectnaptha.com/img/eng_bw.png"
 var filename = "pic.png";
 
+
+
 getFacebook();
-
-// download image
-//downloadImage(url,filename);
-
-
-//testMessage(createMessageText());
 
 
 // FUNCTIONS --------------------------------------------------
 
+
+// gets information from facebook (IPN page posts) 
 function getFacebook(){
     fb.api(ipn_id, { fields: ['posts{full_picture,message,created_time}']   }, function (res) {
         if(!res || res.error) {
             console.log(!res ? 'error occurred' : res.error);
             return;
         }
-        //downloadImage(res.posts.data[0].full_picture, filename);
-        res.posts.data.forEach(function(element){
-            //console.log(element.message);
-            var date = new Date();
-            date = element.created_time;
-            console.log(date.prototype.getDay());
-            //console.log("Dia da semana: " + Date.getDay(date));
-        });
-            //  console.log(res.posts.data[0].message);
 
-        
+        // checks to see if a post is a valid menu
+        var menu = res.posts.data.some(isMenu);
+
+        //if there is no menu...
+        if(menu == false)
+            console.log("There is no menu this week :(");
     });
+}
+
+// cehcks if a post entry is a valid menu
+function isMenu(info){
+    var date = new Date(info.created_time);
+    var now = new Date();
+
+    var daysElapsed = hourDiff(date,now);
+
+    if(date.getDay() < 2 && daysElapsed < 7){ // post on weekend and less than a week ago 
+        url = info.full_picture;
+        testMessage("Menú do IPN (" + date.toLocaleDateString() + ")");
+        return true;
+    }
+
+    return false;
+}
+
+// simple math function for code clarity
+function hourDiff(date, now){
+    date = date-(date/(1000*60*60*24)); //get beginning of day
+    now  = now -(now /(1000*60*60*24)); // get beginning of day
+    var diffDays = (now - date)/(1000*60*60*24); // get days elapsed
+    return diffDays;
 }
 
 // Downloads image from <input> to <output>
@@ -70,7 +88,7 @@ function downloadImage(input, output){
     });
 }
 
-
+// gets text from image recognition algorithm (Tesseract)
 function readImage(image){
     if(logs) console.log("reading image from: [" + image + "]");
     var tesseractPromise = Tesseract
@@ -92,14 +110,15 @@ function testMessage(message){
     if(logs) console.log("Sending message");
     slack.webhook(
         {
-            text: "Chegou a hora de escolher!",
+            text: message,
             attachments:
             [
                 {   
                     mrkdwn_in:"text",
-                    text: message,
+                    text: "IPN",
                     fallback: "Ups, parece que não dá para votar...",
                     callback_id: "vote",
+                    image_url: url,
                     color: "#3AA3E3"/*,
                     uncomment to add button
                     actions:
