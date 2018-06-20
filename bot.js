@@ -1,13 +1,20 @@
 //var express    = require('express');
 const bodyParser = require('body-parser');
 const Slack      = require('slack-node'); // to send messages to Slack
-const Tesseract = require('tesseract.js'); // for image text recognition
-const FB = require('fb'); // to get facebook images
-const request = require('request');
-const fs = require('fs'); // to be a ble to write a file
+const Tesseract  = require('tesseract.js'); // for image text recognition
+const FB         = require('fb'); // to get facebook images
+const request    = require('request');
+const fs         = require('fs'); // to be a ble to write a file
 
 // show or hide logs
-var logs = false;
+var logs = true;
+
+// IPN facebook page id
+var ipn_id = "ipnbarcafetaria";
+
+// where downloaded image will be stored (for image recognition purposes)     
+var filename = "pic.png";
+
 
 // point bot to slack channel
 const bot_link = process.env.LINK; // no hack, pls
@@ -16,25 +23,38 @@ slack.setWebhook(bot_link); // the channel is defined on slack app settings
 
 // setup conection to Facebook REST API
 const fb_token = process.env.FB_TOKEN;
+const app_id = process.env.APP_ID;
+const app_secret = process.env.APP_SECRET;
+
 var fb = new FB.Facebook();
-fb.setAccessToken(fb_token);
-
-//IPN facebook page id
-var ipn_id = "ipnbarcafetaria";
-
-//IPN menu image
-var url = "https://scontent.fopo2-1.fna.fbcdn.net/v/t1.0-9/35464654_1759158370816852_1085733037682982912_n.jpg?_nc_cat=0&oh=a9bd7f868dc5639d416aa380a5967078&oe=5BA595FF";
-           
-//test image
-//var url = "http://tesseract.projectnaptha.com/img/eng_bw.png"
-var filename = "pic.png";
+//fb.setAccessToken(fb_token);
+console.log("not setting");
+refreshToken();
 
 
-
-getFacebook();
+//getFacebook();
 
 
 // FUNCTIONS --------------------------------------------------
+
+function refreshToken(){
+    console.log("refreshing token");
+    FB.api('oauth/access_token', {
+        client_id: app_id,
+        client_secret: app_secret,
+        grant_type: 'client_credentials'
+    }, function (res) {
+        if(!res || res.error) {
+            console.log(!res ? 'error occurred' : res.error);
+            return;
+        }
+        if(logs) console.log(res);
+        var accessToken = res.access_token;
+        fb.setAccessToken(accessToken);
+        setTimeout(refreshToken,300000);
+
+    });
+}
 
 
 // gets information from facebook (IPN page posts) 
@@ -115,8 +135,9 @@ function testMessage(message){
             [
                 {   
                     mrkdwn_in:"text",
-                    text: "IPN",
-                    fallback: "Ups, parece que não dá para votar...",
+                    title: "IPN cafetaria",
+                    title_link: "https://www.facebook.com/pg/ipnbarcafetaria/photos",
+                    fallback: "Menú da semana",
                     callback_id: "vote",
                     image_url: url,
                     color: "#3AA3E3"/*,
