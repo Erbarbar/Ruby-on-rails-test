@@ -1,0 +1,9 @@
+== README
+
+start server:
+<tt>rails server -b 0.0.0.0</tt>
+
+Create table:
+<tt>rails generate scaffold <table_name> <column_name>:<column_type> </tt>
+
+
