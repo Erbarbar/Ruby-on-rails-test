@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data: 2018-06-24
+  sescricao: MyText
+  duracao: 1
+
+two:
+  data: 2018-06-24
+  sescricao: MyText
+  duracao: 1

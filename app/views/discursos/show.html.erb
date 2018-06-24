@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @discurso.data %>
+</p>
+
+<p>
+  <strong>Sescricao:</strong>
+  <%= @discurso.sescricao %>
+</p>
+
+<p>
+  <strong>Duracao:</strong>
+  <%= @discurso.duracao %>
+</p>
+
+<%= link_to 'Edit', edit_discurso_path(@discurso) %> |
+<%= link_to 'Back', discursos_path %>

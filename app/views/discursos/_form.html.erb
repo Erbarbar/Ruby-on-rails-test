@@ -1,0 +1,29 @@
+<%= form_for(@discurso) do |f| %>
+  <% if @discurso.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discurso.errors.count, "error") %> prohibited this discurso from being saved:</h2>
+
+      <ul>
+      <% @discurso.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
+  </div>
+  <div class="field">
+    <%= f.label :sescricao %><br>
+    <%= f.text_area :sescricao %>
+  </div>
+  <div class="field">
+    <%= f.label :duracao %><br>
+    <%= f.number_field :duracao %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
