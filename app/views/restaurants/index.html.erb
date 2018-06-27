@@ -1,31 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Restaurants</h1>
-
-<table style="border: 1px solid black;">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody style="text-align: center;">
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td style="border: 1px solid black;"><%= restaurant.name %></td>
-        <td style="border: 1px solid black;"><%= restaurant.description %></td>
-        <td style="border: 1px solid black;"><%= restaurant.location %></td>
-        <td><%= link_to 'Show', restaurant %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<h1>Listing all restaurants</h1>
+<p>
+	<%= link_to "Create new restaurant", new_restaurant_path %>
+</p>
+<table>
+	<tr>
+		<th>Name</th>
+	</tr>
+		<% @restaurants.each do |restaurant| %>
+			<tr>
+				<td><%= restaurant.name %></td>
+				<td><%= link_to 'Show', restaurant_path(restaurant) %></td>
+				<td><%= link_to 'Delete', restaurant_path(restaurant), method: :delete, data: {confirm: "Are you sure?"} %></td>
+			</tr>
+	<% end %>
 </table>
-
-<br>
-
-<%= link_to 'New Restaurant', new_restaurant_path %>

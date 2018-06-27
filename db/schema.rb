@@ -11,37 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180624193237) do
+ActiveRecord::Schema.define(version: 20180626111027) do
 
   create_table "discursos", force: :cascade do |t|
     t.date     "data"
-    t.text     "sescricao"
-    t.integer  "duracao"
+    t.text     "descricao"
+    t.time     "duracao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|
+    t.string   "type"
     t.string   "name"
-    t.string   "oprtions"
-    t.integer  "price"
-    t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.float    "price"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string   "name"
+    t.float    "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "name"
+    t.binary   "data"
+    t.string   "filename"
+    t.string   "mime_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
-    t.text     "description"
-    t.string   "location"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

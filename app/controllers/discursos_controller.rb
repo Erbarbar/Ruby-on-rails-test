@@ -69,6 +69,6 @@ class DiscursosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def discurso_params
-      params.require(:discurso).permit(:data, :sescricao, :duracao)
+      params.require(:discurso).permit(:data, :descricao, :duracao)
     end
 end

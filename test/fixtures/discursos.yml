@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  data: 2018-06-24
-  sescricao: MyText
-  duracao: 1
+  data: 2018-06-26
+  descricao: MyText
+  duracao: 2018-06-26 05:47:21
 
 two:
-  data: 2018-06-24
-  sescricao: MyText
-  duracao: 1
+  data: 2018-06-26
+  descricao: MyText
+  duracao: 2018-06-26 05:47:21

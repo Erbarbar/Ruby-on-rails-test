@@ -18,7 +18,7 @@ class DiscursosControllerTest < ActionController::TestCase
 
   test "should create discurso" do
     assert_difference('Discurso.count') do
-      post :create, discurso: { data: @discurso.data, duracao: @discurso.duracao, sescricao: @discurso.sescricao }
+      post :create, discurso: { data: @discurso.data, descricao: @discurso.descricao, duracao: @discurso.duracao }
     end
 
     assert_redirected_to discurso_path(assigns(:discurso))
@@ -35,7 +35,7 @@ class DiscursosControllerTest < ActionController::TestCase
   end
 
   test "should update discurso" do
-    patch :update, id: @discurso, discurso: { data: @discurso.data, duracao: @discurso.duracao, sescricao: @discurso.sescricao }
+    patch :update, id: @discurso, discurso: { data: @discurso.data, descricao: @discurso.descricao, duracao: @discurso.duracao }
     assert_redirected_to discurso_path(assigns(:discurso))
   end
 

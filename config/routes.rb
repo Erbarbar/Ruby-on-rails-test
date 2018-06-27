@@ -1,18 +1,24 @@
 Rails.application.routes.draw do
+  resources :photos
   resources :discursos
-  resources :items
-  resources :restaurants
   resources :users
-  resources :users
+	
+	resources :restaurants
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'pages#home'
 	get 'home', to: 'pages#home'
-	get 'login', to: 'pages#login'
+	get 'test', to: 'pages#test'
 	get 'dsv01', to: 'pages#dsv01'
 	get 'jonubaso', to: 'pages#jonubaso'
+	
+	get 'button', to: 'pages#button'
+	
+	resources :photos do
+  	get "serve", :on => :member
+	end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
