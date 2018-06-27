@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	get 'jonubaso', to: 'pages#jonubaso'
 	
 	get 'button', to: 'pages#button'
+	get 'graph', to: 'pages#graph'
 	
 	resources :photos do
   	get "serve", :on => :member

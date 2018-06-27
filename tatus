@@ -1,0 +1,133 @@
+[33mcommit 0a1aac7dd38d5abb5cf73d7e859b38a0fee112fc[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Wed Jun 27 06:23:22 2018 -0400
+
+    Messed around with a bunch of stuff
+
+[33mcommit 8883344aa8446421dfd75ebf54c8d407d3175ba1[m
+Merge: 7f38c98 f30672e
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Mon Jun 25 05:56:54 2018 -0400
+
+    Pull from gitlab
+
+[33mcommit 7f38c9832409a243bfd493289e14f5db2c6373a5[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Sun Jun 24 15:33:21 2018 -0400
+
+    Add discursos
+
+[33mcommit 154a0fc10726658c79e47b54f36770a1345979ea[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 13:01:31 2018 -0400
+
+    change personal message
+
+[33mcommit ccb1495029346e92050267bf44af02e828ae1d45[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 12:47:13 2018 -0400
+
+    Add User, Restaurant and Item tables
+
+[33mcommit 007c7e83f390a73f79664bcf92eb1f7052db0c7f[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 10:56:25 2018 -0400
+
+    Change gem rails version
+
+[33mcommit d9010b368c239f0f584c99adbd5c642aa80fc9fe[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 07:35:22 2018 -0400
+
+    Copy gemfile from new project
+
+[33mcommit f1a4d309b38ce71a4a0f443dd9c6e001d47f8141[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 07:23:59 2018 -0400
+
+    Try not specify pg version
+
+[33mcommit b73dd481637738fe2274253d5918250e42943a3c[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 07:11:50 2018 -0400
+
+    Change pg version
+
+[33mcommit 76622e8cfe026b39ba0e225d7a383ced60c3af93[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 07:00:38 2018 -0400
+
+    Prepare for heroku deploy
+
+[33mcommit 200779124c01eccc157cdacf7ca05d11ce6323c2[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 06:24:15 2018 -0400
+
+    Removed old project
+
+[33mcommit d04fbd6f047a22c0973419b447c965b2dd4bfe16[m
+Merge: 55214f5 c4b1a97
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 06:18:39 2018 -0400
+
+    Merge branch 'master' of github.com:Erbarbar/Ruby-on-rails-test
+
+[33mcommit 55214f5c3ba422b1555b267ac55d598633451517[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Fri Jun 22 06:06:19 2018 -0400
+
+    First comit new project
+
+[33mcommit f30672e6661267c4d704d1172e62e1597513822e[m
+Author: Erbarbar <filipelopez3@gmail.com>
+Date:   Wed Jun 20 11:33:12 2018 +0100
+
+    Add refresh token function
+
+[33mcommit f610f2b7bf2fd27bcc3c2115c130221e9c708b09[m
+Author: Erbarbar <filipelopez3@gmail.com>
+Date:   Tue Jun 19 15:54:42 2018 +0100
+
+    Send menu image to slack
+
+[33mcommit e70040ff3e244c08f529ea99a2bcfeedf449df8b[m
+Author: Erbarbar <filipelopez3@gmail.com>
+Date:   Tue Jun 19 11:56:50 2018 +0100
+
+    Move repo from github
+
+[33mcommit 3df4ad60664719964ca83407881786ca99f9b4d7[m
+Author: André Duarte <aduarte@ubiwhere.com>
+Date:   Tue Jun 19 11:49:07 2018 +0100
+
+    Add new file
+
+[33mcommit c4b1a9750c46432fc188a2fe2707326f3c1d1494[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Mon Apr 16 07:00:48 2018 -0400
+
+    Add Arcticles table
+
+[33mcommit 5fbfd99b60c41e84218cb901de793d168d7c61fd[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Sun Apr 15 15:02:07 2018 -0400
+
+    Update pg version
+
+[33mcommit 6803a4f6923e0e17c9be3e526d364c3c4a03c131[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Sun Apr 15 13:34:40 2018 -0400
+
+    Try to change line
+
+[33mcommit 14b511b798711e2953f9be717d14dc006cef235d[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Sun Apr 15 13:27:31 2018 -0400
+
+    Change readme
+
+[33mcommit a9cbf6936e7b8756c784854abb9cea1139be0a9f[m
+Author: filipelopez3 <filipelopez3@gmail.com>
+Date:   Sun Apr 15 13:04:24 2018 -0400
+
+    Ready for heroku deploy
