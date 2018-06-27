@@ -16,10 +16,9 @@ class PagesController < ActionController::Base
 	
 	def graph
 		puts "\nTesting graph\n\n"
-		@graph = Koala::Facebook::API.new()
-		puts ENV["MY_TOKEN"]
 		
-		puts @graph
+		@graph = Koala::Facebook::API.new()
+		
 	end
 	
 	def dsv01
