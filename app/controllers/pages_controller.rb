@@ -46,7 +46,7 @@ class PagesController < ActionController::Base
 		@graph = Koala::Facebook::API.new(@token)
 		puts "graph--------------------"
 		puts @graph
-		@ipn = @graph.get_object('facebook')
+		@ipn = @graph.get_object('facebook', api_version: "v2.0")
 		puts "IPN-------------------"
 		puts @ipn
 	end
