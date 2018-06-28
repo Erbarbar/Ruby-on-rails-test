@@ -37,7 +37,11 @@ class PagesController < ActionController::Base
 		@oauth = Koala::Facebook::OAuth.new(ENV["MY_APP_ID"], ENV["MY_APP_SECRET"], "https://erbarbar.herokuapp.com/graph2")
 		@url = @oauth.url_for_access_token(@code)
 		puts @url
-		redirect_to @url
+		@access_string = @oauth.fetch_token_string(@code)
+		@access = @oauth.parse_token_string(@result)
+		@token = @access[:access_token]
+		
+		puts @token
 	end
 	
 	def dsv01
