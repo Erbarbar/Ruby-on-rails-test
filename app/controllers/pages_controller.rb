@@ -33,15 +33,16 @@ class PagesController < ActionController::Base
 	
 	def graph2
 		@code = params[:code]
+		puts "code-----------------------"
 		puts @code
 		@oauth = Koala::Facebook::OAuth.new(ENV["MY_APP_ID"], ENV["MY_APP_SECRET"], "https://erbarbar.herokuapp.com/graph2")
 		@url = @oauth.url_for_access_token(@code)
+		puts "url------------------------"
 		puts @url
-		@access_string = @oauth.fetch_token_string(@code)
+		@token = @oauth.get_access_token(@code)
 		@access = @oauth.parse_token_string(@result)
-		@token = @access[:access_token]
-		
-		puts @token
+		puts "access--------------------"
+		puts @access
 	end
 	
 	def dsv01
