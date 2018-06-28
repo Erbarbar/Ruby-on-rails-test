@@ -7,8 +7,16 @@
 		Graph2
 	</h1>
 
-
-
+	<table>
+		<% @ipn.each do |i| %>
+			<tr>
+				<td><%= i[:message] %></td>
+				<td><%= i[:created_time] %></td>
+				<td><img src=<% i[:full_picture] %>></td>
+		</tr>
+		<% end %>
+	</table>
+	
 
 
 	<%= button_to "Home", root_path, :method => :get %>
