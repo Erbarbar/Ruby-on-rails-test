@@ -34,7 +34,7 @@ class PagesController < ActionController::Base
 	def graph2
 		@code = params[:code]
 		puts @code
-		@tok = @oauth.url_for_access_token(@code)
+		@tok = @oauth.get_access_token_info(@code)
 		puts @tok
 	end
 	
