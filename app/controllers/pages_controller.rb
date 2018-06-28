@@ -15,10 +15,20 @@ class PagesController < ActionController::Base
 	end
 	
 	def graph
+		require 'koala'
 		puts "\nTesting graph\n\n"
 		
-		@graph = Koala::Facebook::API.new()
 		
+		@oauth = Koala::Facebook::OAuth.new(ENV["MY_APP_ID"], ENV["MY_APP_SECRET"], "http://ubi-eat-filipelopez3334128.codeanyapp.com:3000/graph")
+		
+		@url = @oauth.url_for_oauth_code
+		@app_tokenp_token =  @oauth.get_app_access_token
+		@my_token = ENV["MY_TOKEN"]
+		
+		puts @url
+		puts @app_token
+		puts @my_token
+		redirect_to @url
 	end
 	
 	def dsv01

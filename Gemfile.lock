@@ -62,6 +62,8 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    hashie (3.5.7)
+    httpclient (2.8.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.6.4)
@@ -84,6 +86,9 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.0)
+    mini_fb (2.4.0)
+      hashie
+      httpclient
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
@@ -184,6 +189,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   koala
+  mini_fb
   paperclip (~> 4.2)
   pg (~> 0.11)
   rails (= 4.2.8)
