@@ -40,9 +40,8 @@ class PagesController < ActionController::Base
 		puts "url------------------------"
 		puts @url
 		@token = @oauth.get_access_token(@code)
-		@access = @oauth.parse_token_string(@result)
-		puts "access--------------------"
-		puts @access
+		puts "token--------------------"
+		puts @token
 	end
 	
 	def dsv01
