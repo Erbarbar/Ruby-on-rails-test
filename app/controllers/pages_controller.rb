@@ -31,6 +31,10 @@ class PagesController < ActionController::Base
 		redirect_to @url
 	end
 	
+	def graph2
+		puts params
+	end
+	
 	def dsv01
 		
 	end
