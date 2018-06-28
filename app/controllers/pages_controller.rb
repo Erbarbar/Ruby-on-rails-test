@@ -42,6 +42,11 @@ class PagesController < ActionController::Base
 		@token = @oauth.get_access_token(@code)
 		puts "token--------------------"
 		puts @token
+		
+		@graph = Koala::Facebook::API.new(@token)
+		@me = @graph.get_object("me")
+		puts "me-------------------"
+		puts @me
 	end
 	
 	def dsv01
