@@ -32,7 +32,10 @@ class PagesController < ActionController::Base
 	end
 	
 	def graph2
-		puts params
+		@code = params.code
+		puts @code
+		@tok = @oauth.url_for_access_token(code)
+		puts @tok
 	end
 	
 	def dsv01
