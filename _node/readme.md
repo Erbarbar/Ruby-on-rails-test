@@ -2,10 +2,7 @@
 
 to run:
 ```
-node bot.js
+node bot.js xXxxXXxxXxxXx
 ```
 
-to update facebook API token
-```
-setx FB_TOKEN "xXxxXXxxXxxXx"
-```
+where 'xXxxXXxxXxxXx' is your facebook Token

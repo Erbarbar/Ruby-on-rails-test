@@ -22,23 +22,73 @@ const slack = new Slack();
 slack.setWebhook(bot_link); // the channel is defined on slack app settings
 
 // setup conection to Facebook REST API
-const fb_token = process.env.FB_TOKEN;
+const fb_token = process.argv[2];
+//const fb_token = process.env.FB_TOKEN; //https://developers.facebook.com/tools/explorer/
 const app_id = process.env.APP_ID;
 const app_secret = process.env.APP_SECRET;
 
 var fb = new FB.Facebook();
-//fb.setAccessToken(fb_token);
-console.log("not setting");
-refreshToken();
-
+fb.setAccessToken(fb_token);
+//extendToken();
+//refreshToken();
+if(logs) console.log(fb_token);
+getFacebook();
 
 //getFacebook();
 
 
 // FUNCTIONS --------------------------------------------------
 
+// the app needs to be validated so it can access public information
+function extendToken(){
+    if(logs) console.log("extendToken");
+    var accessToken = fb.getAccessToken();
+    if(logs) console.log(accessToken);
+    FB.api('oauth/access_token', {
+        client_id: app_id,
+        client_secret: app_secret,
+        grant_type: 'fb_exchange_token',
+        fb_exchange_token: accessToken
+    }, function (res) {
+        if(!res || res.error) {
+            console.log(!res ? 'error occurred' : res.error);
+            return;
+        }
+        if(logs) console.log(res);
+        var accessToken = res.access_token;
+        var expires = res.expires ? res.expires : 0;
+    });
+}
+
+// the app needs to be validated so it can access public information
 function refreshToken(){
-    console.log("refreshing token");
+    console.log("refreshToken()");
+    if(logs) console.log(fb.getAccessToken());
+    FB.api('oauth/access_token', {
+        client_id: app_id,
+        client_secret: app_secret,
+        redirect_uri: "http://localhost:3000",
+        grant_type: 'refresh_token'
+    }, function (res) {
+        if(!res || res.error) {
+            console.log(!res ? 'error occurred' : res.error);
+            return;
+        }
+        if(logs) console.log(res);
+        var accessToken = res.access_token;
+        fb.setAccessToken(accessToken);
+        if(logs) console.log(fb.getAccessToken());
+        //getFacebook();
+        //extendToken();
+    });
+}
+
+// same as refresh token, but repeats each minute
+function refreshTokenRepeat(){
+    console.log("refreshTokenRepeat()");
+    if(logs) console.log(fb.getAccessToken());
+    var now = new Date();
+    console.log(now);
     FB.api('oauth/access_token', {
         client_id: app_id,
         client_secret: app_secret,
@@ -51,14 +101,16 @@ function refreshToken(){
         if(logs) console.log(res);
         var accessToken = res.access_token;
         fb.setAccessToken(accessToken);
-        setTimeout(refreshToken,300000);
+        if(logs) console.log(fb.getAccessToken());
+        setTimeout(refreshToken,60000);
 
     });
 }
 
-
 // gets information from facebook (IPN page posts) 
 function getFacebook(){
+    if(logs) console.log("getFacebook()");
+    if(logs) console.log(fb.getAccessToken());
     fb.api(ipn_id, { fields: ['posts{full_picture,message,created_time}']   }, function (res) {
         if(!res || res.error) {
             console.log(!res ? 'error occurred' : res.error);
@@ -83,7 +135,8 @@ function isMenu(info){
 
     if(date.getDay() < 2 && daysElapsed < 7){ // post on weekend and less than a week ago 
         url = info.full_picture;
-        testMessage("Menú do IPN (" + date.toLocaleDateString() + ")");
+        downloadImage(url,filename);
+        
         return true;
     }
 
@@ -104,6 +157,7 @@ function downloadImage(input, output){
     if(logs) console.log("downloading image from [" + input + "] to [" + output +"]");
     var writeFileStream = fs.createWriteStream(output);
     request(input).pipe(writeFileStream).on('close', function() {
+
         readImage(output);
     });
 }
@@ -112,7 +166,11 @@ function downloadImage(input, output){
 function readImage(image){
     if(logs) console.log("reading image from: [" + image + "]");
     var tesseractPromise = Tesseract
-        .recognize(image, 'por')
+        .recognize(image, {
+            lang: 'por',
+            tessedit_enable_dict_correction: '1',
+            tessedit_word_for_word: '1'
+        })
         .progress(function  (p) { if(logs) console.log('progress', p)  })
         .catch(err => console.error(err))
         .then(function (result) {

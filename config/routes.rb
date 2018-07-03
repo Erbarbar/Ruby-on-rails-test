@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 	get 'graph', to: 'pages#graph'
 	get 'graph2', to: 'pages#graph2'
 	
+	get 'privacypolicy', to: 'pages#privacypolicy'
 	resources :photos do
   	get "serve", :on => :member
 	end
