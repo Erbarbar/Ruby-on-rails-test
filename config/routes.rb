@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 	get 'test', to: 'pages#test'
 	get 'dsv01', to: 'pages#dsv01'
 	get 'jonubaso', to: 'pages#jonubaso'
+	get 'gironne', to: 'pages#gironne'
 	
 	get 'button', to: 'pages#button'
 	get 'graph', to: 'pages#graph'

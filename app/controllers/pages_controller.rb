@@ -53,11 +53,11 @@ class PagesController < ActionController::Base
 		puts @ipn
 	end
 	
-	def dsv01
-		
+	def dsv01 
 	end
-	
-	def jonubaso
+	def jonubaso 
+	end
+	def gironne
 		
 	end
 
