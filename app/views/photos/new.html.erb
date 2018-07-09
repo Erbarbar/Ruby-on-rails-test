@@ -1,12 +1,14 @@
 <h1>New Photo</h1>
 
 <%= render 'form' %>
+<!--
 <%= form_for(@photo, :html => {:multipart => true}) do |f| %>
-	<%= f.text_field :picture_from_url, label: "Enter a URL" %>
+	<%= f.text_field :url, label: "Enter a URL" %>
 	<div class="actions">
     <%= f.submit %>
   </div>
 <%end%>
+-->
 <%= link_to 'Back', photos_path %>
 
 

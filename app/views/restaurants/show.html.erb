@@ -1,5 +1,9 @@
-<h1>Showing selected restaurant</h1>
+<p id="notice"><%= notice %></p>
+
 <p>
-	Name: <%= @restaurant.name %>
+  <strong>Name:</strong>
+  <%= @restaurant.Name %>
 </p>
-<%= link_to "All Restaurants", restaurants_path %>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>

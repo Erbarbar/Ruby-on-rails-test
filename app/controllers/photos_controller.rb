@@ -30,6 +30,15 @@ class PhotosController < ApplicationController
         t.filename  = params[:photo][:data].original_filename
         t.mime_type = params[:photo][:data].content_type
       end
+			if params[:photo][:name]
+				t.name = params[:photo][:name]
+			end
+			if params[:photo][:url]
+				puts "url-----------------------"
+				puts params[:photo][:url]
+				@avatar_remote_url = Photo.avatar_remote_url params[:photo][:url]
+			end
+			
 		end
 
     respond_to do |format|
@@ -73,10 +82,8 @@ class PhotosController < ApplicationController
     send_data(@photo.data, :type => @photo.mime_type, :filename => "#{@photo.name}.jpg", :disposition => "inline")
   end
 	
-	def picture_from_url(url)
-    self.picture = URI.parse(url).open
-  end
 
+	
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
@@ -85,6 +92,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:image, :title)
+      params.require(:photo).permit(:image, :title, :url, :name)
     end
 end
