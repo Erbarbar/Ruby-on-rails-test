@@ -1,6 +1,6 @@
 require 'koala'
 
-class PagesController < ActionController::Base
+class PagesController < ApplicationController
 	def home
 		
 	end

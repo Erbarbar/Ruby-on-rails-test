@@ -13,7 +13,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "paperclip", "~> 4.2"
 gem "koala"
 gem "mini_fb"
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap', '~> 4.1.1'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 group :development, :test do
   gem 'byebug'
