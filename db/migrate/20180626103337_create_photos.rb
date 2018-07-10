@@ -6,7 +6,11 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :filename
       t.string :mime_type
 			t.string :url
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> master
       t.timestamps null: false
     end
   end

@@ -20,7 +20,7 @@ class RestaurantsControllerTest < ActionController::TestCase
     assert_difference('Restaurant.count') do
       post :create, restaurant: { name: @restaurant.name }
     end
-
+		
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
 
