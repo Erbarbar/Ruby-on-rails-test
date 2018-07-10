@@ -9,6 +9,9 @@
 <body>
 
 <%= yield %>
+	<div style="position:fixed; bottom:5%;">
+		<%= button_to "Home", root_path, :method => :get %>
 <!--<%= debug(params) if Rails.env.development? %>-->
+	</div>
 </body>
 </html>

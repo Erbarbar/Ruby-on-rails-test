@@ -5,6 +5,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.binary :data
       t.string :filename
       t.string :mime_type
+			t.string :url
 
       t.timestamps null: false
     end
