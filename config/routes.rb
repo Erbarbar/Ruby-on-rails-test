@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   resources :menus
   resources :restaurants
-  resources :photos
   resources :discursos
-  resources :users
-	resources :menus
-	
+	resources :photos do
+  	get "serve", :on => :member
+	end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -22,9 +21,7 @@ Rails.application.routes.draw do
 	get 'graph2', to: 'pages#graph2'
 	
 	get 'privacypolicy', to: 'pages#privacypolicy'
-	resources :photos do
-  	get "serve", :on => :member
-	end
+	
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
