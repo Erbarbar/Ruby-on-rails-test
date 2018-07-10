@@ -8,7 +8,7 @@
       <th>Type</th>
       <th>Name</th>
       <th>Price</th>
-      <th>Desctiption</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.type %></td>
+        <td><%= item.food_type %></td>
         <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= item.desctiption %></td>
+        <td><%= item.price %>€</td>
+        <td><%= item.description %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

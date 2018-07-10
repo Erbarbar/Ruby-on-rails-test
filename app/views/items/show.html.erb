@@ -2,7 +2,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @item.type %>
+  <%= @item.food_type %>
 </p>
 
 <p>
@@ -12,12 +12,12 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @item.price %>
+  <%= @item.price %> €
 </p>
 
 <p>
-  <strong>Desctiption:</strong>
-  <%= @item.desctiption %>
+  <strong>Description:</strong>
+  <%= @item.description %>
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
